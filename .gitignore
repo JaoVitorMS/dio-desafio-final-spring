@@ -303,4 +303,6 @@ buildNumber.properties
 .history
 .ionide
 
+
+comandos-githubFLOW.txt
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,intellij,intellij+iml,visualstudiocode,maven
