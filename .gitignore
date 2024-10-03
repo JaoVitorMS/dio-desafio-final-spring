@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 .idea/
-
+.comandos-githubFLOW.txt
 ### IntelliJ IDEA ###
 .idea
 *.iws
