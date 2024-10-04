@@ -1,4 +1,4 @@
-package org.zsh.biblioteca_dio.application.configuration;
+package org.zsh.biblioteca_dio.infra.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,9 +10,9 @@ import org.zsh.biblioteca_dio.application.port.outRepository.LivroRepository;
 @EnableJpaRepositories(basePackageClasses = LivroRepositoryJPA.class)
 public class AppConfig {
 
-    @Bean
-    public LivroService livroService(LivroRepository livroRepository){
-        return new LivroService(livroRepository);
-    }
+//    @Bean
+//    public LivroService livroService(LivroRepository livroRepository){
+//        return new LivroService(livroRepository);
+//    }
 
 }
