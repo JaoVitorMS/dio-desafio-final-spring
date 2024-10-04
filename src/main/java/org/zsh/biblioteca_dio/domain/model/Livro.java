@@ -25,12 +25,12 @@ public class Livro {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private  STATUS Status;
+    private Status status;
 
     public Livro(String titulo, String autor) {
         this.titulo = titulo;
         this.autor = autor;
-        this.Status = STATUS.EM_ESTOQUE;
+        this.status = Status.EM_ESTOQUE;
     }
 
 }
