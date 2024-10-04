@@ -1,4 +1,4 @@
-package org.zsh.biblioteca_dio.domain;
+package org.zsh.biblioteca_dio.domain.model;
 
 
 import jakarta.persistence.*;
