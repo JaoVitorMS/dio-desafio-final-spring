@@ -2,19 +2,16 @@ package org.zsh.biblioteca_dio.domain.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "Livros")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class Livro {
-
     @Id
     @GeneratedValue
     @Column(nullable = false)
@@ -25,4 +22,15 @@ public class Livro {
 
     @Column(nullable = false)
     private String autor;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private  STATUS Status;
+
+    public Livro(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.Status = STATUS.EM_ESTOQUE;
+    }
+
 }
