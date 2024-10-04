@@ -1,13 +1,5 @@
 package org.zsh.biblioteca_dio.domain.model;
 
-
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import java.util.Objects;
-
-
 public class Livro {
     
     private long id;
@@ -16,7 +8,8 @@ public class Livro {
     private Status status;
 
 
-    public Livro(String titulo, String autor) {
+    public Livro(long id, String titulo, String autor) {
+        this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.status = Status.EM_ESTOQUE;
