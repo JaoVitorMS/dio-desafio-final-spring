@@ -10,8 +10,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Livros")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 public class LivroRepositoryEntity {
     
     @Id
@@ -29,5 +29,12 @@ public class LivroRepositoryEntity {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    public LivroRepositoryEntity ( long id, String titulo, String autor ) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.status = Status.EM_ESTOQUE;
+    }
 
+    public LivroRepositoryEntity() {}
 }

@@ -15,6 +15,8 @@ public class Livro {
         this.status = Status.EM_ESTOQUE;
     }
 
+    public Livro() {}
+
 
     public long getId() {
         return this.id;
