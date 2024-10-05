@@ -10,6 +10,8 @@ public interface LivroRepository {
     
     List<Livro> buscarTodos();
     Optional<Livro> findById(Long id);
+    Optional<Livro> findByTitulo(String titulo);
+    Optional<Livro> findByAutor(String autor);
     void salvar( LivroDTO livroDTO );
     void remover(Long id);
     void atualizar( LivroDTO livroDTO );

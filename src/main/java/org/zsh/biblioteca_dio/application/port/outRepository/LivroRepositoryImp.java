@@ -53,5 +53,17 @@ public class LivroRepositoryImp implements LivroRepository{
         livroRepositoryJPA.save(livroEntity);
     }
 
+    @Override
+    public Optional<Livro> findByTitulo(String titulo) {
+        return livroRepositoryJPA.findByTitulo(titulo)
+                .map(livroMapper::toModel);
+    }
+
+    @Override
+    public Optional<Livro> findByAutor(String autor) {
+        return livroRepositoryJPA.findByAutor(autor)
+                .map(livroMapper::toModel);
+    }
+
 
 }
