@@ -1,7 +1,7 @@
 package org.zsh.biblioteca_dio.dto;
 
 import org.springframework.stereotype.Component;
-import org.zsh.biblioteca_dio.adapter.out.entity.LivroEntity;
+import org.zsh.biblioteca_dio.adapter.outRepository.entity.LivroEntity;
 import org.zsh.biblioteca_dio.domain.model.Livro;
 
 @Component

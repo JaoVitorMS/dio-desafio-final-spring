@@ -1,15 +1,13 @@
 package org.zsh.biblioteca_dio.application.service;
 
 import org.springframework.stereotype.Service;
-import org.zsh.biblioteca_dio.adapter.out.entity.LivroEntity;
+import org.zsh.biblioteca_dio.adapter.outRepository.entity.LivroEntity;
 import org.zsh.biblioteca_dio.application.ports.in.LivroServicePort;
 import org.zsh.biblioteca_dio.application.ports.out.LivroRepositoryPort;
-import org.zsh.biblioteca_dio.domain.model.Livro;
 import org.zsh.biblioteca_dio.dto.LivroConversor;
 import org.zsh.biblioteca_dio.dto.LivroDTO;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
