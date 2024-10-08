@@ -4,10 +4,15 @@ import org.springframework.stereotype.Service;
 import org.zsh.biblioteca_dio.adapter.out.entity.LivroEntity;
 import org.zsh.biblioteca_dio.application.ports.in.LivroServicePort;
 import org.zsh.biblioteca_dio.application.ports.out.LivroRepositoryPort;
+import org.zsh.biblioteca_dio.domain.model.Livro;
 import org.zsh.biblioteca_dio.dto.LivroConversor;
 import org.zsh.biblioteca_dio.dto.LivroDTO;
-
 import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -20,39 +25,54 @@ public class LivroServiceImpl implements LivroServicePort {
     
     @Override
     public void registrarLivro(LivroDTO livroDTO) {
-        LivroEntity livroEntity = new LivroEntity();
-        livroEntity = livroConversor.converterParaEntity(livroDTO);
-
+        LivroEntity livroEntity = livroConversor.toEntity(livroDTO);
+        livroRepositoryPort.save(livroEntity);
     }
     @Override
     public void atualizarLivro(LivroDTO livroDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarLivro'");
+        LivroEntity livroEntity = livroConversor.toEntity(livroDTO);
+        List<LivroEntity> livros = livroRepositoryPort.buscarLivroPorTituloAutor(livroEntity.getTitulo(),livroEntity.getAutor());
+
+        Optional<LivroEntity> livroAchado = livros.stream()
+                .filter(livro -> livro.getAutor().equals(livroEntity.getAutor()))
+                .findFirst();
+        livroAchado.ifPresent(livro -> {
+            livro.setAutor(livroEntity.getAutor());
+            livro.setTitulo(livroEntity.getTitulo());
+
+        // 4. Salvar o livro atualizado
+        livroRepositoryPort.atualizarLivro(livro);
+    });
+
+        if (livroAchado.isEmpty()) {
+//            throw new ResourceNotFoundException("Livro não encontrado para atualização.");
+            livroRepositoryPort.save(livroEntity);
+        }
     }
     @Override
     public void deletarLivroPorTitulo(String titulo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarLivroPorTitulo'");
+        livroRepositoryPort.deletarLivroPorTitulo(titulo);
     }
+
     @Override
-    public void deletarLivroPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarLivroPorId'");
+    public List<LivroDTO> buscarTodosLivros () {
+        List<LivroEntity> livroEntities = livroRepositoryPort.buscarTodos();
+        return livroEntities.stream()
+                .map(livros -> livroConversor.entityToDTO(livros) )
+                .collect(Collectors.toList());
     }
-    @Override
-    public LivroDTO buscarLivroPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarLivroPorId'");
-    }
+
     @Override
     public LivroDTO buscarLivroPorAutor(String autor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarLivroPorAutor'");
+        LivroEntity livroEntity = livroRepositoryPort.buscarLivroPorAutor(autor);
+        LivroDTO getLivro = livroConversor.entityToDTO(livroEntity);
+        return getLivro;
     }
     @Override
     public LivroDTO buscarLivroPorTitulo(String titulo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarLivroPorTitulo'");
+        LivroEntity livroEntity = livroRepositoryPort.buscarLivroPorAutor(titulo);
+        LivroDTO getLivro = livroConversor.entityToDTO(livroEntity);
+        return getLivro;
     }
     
   
