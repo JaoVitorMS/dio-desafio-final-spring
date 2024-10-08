@@ -31,4 +31,14 @@ public class LivroController {
         livroServiceImpl.registrarLivro(livro);
         return new ResponseEntity<>(livro, HttpStatus.CREATED);
     }
+    @PostMapping("/add")
+    public String  adicionar(
+        @RequestParam String titulo,
+        @RequestParam String autor
+    ) {
+        LivroDTO livroDTO  = new LivroDTO(titulo, autor);
+        livroServiceImpl.registrarLivro(livroDTO);
+        return "redirect:/livros/catalogo";
+    }
+
 }

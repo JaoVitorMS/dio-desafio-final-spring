@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca DIO</title>
@@ -7,27 +7,11 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Catálogo de Livros</h1>
-        <table class="table table-striped mt-3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Ano</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="livro : ${livros}">
-                    <td th:text="${livro.id}">1</td>
-                    <td th:text="${livro.titulo}">Título do Livro</td>
-                    <td th:text="${livro.autor}">Autor do Livro</td>
-                    <td th:text="${livro.ano}">2023</td>
-                </tr>
-            </tbody>
-        </table>
+        <h1 class="mt-5">Catálogo de Livros JAO</h1>
+
+        <!-- Formulário para adicionar novo livro -->
         <h2 class="mt-5">Adicionar Novo Livro</h2>
-        <form th:action="@{/livros/adicionar}" method="post">
+        <form action="http://localhost:8080/livros/add" method="post">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" required>
@@ -35,10 +19,6 @@
             <div class="form-group">
                 <label for="autor">Autor</label>
                 <input type="text" class="form-control" id="autor" name="autor" required>
-            </div>
-            <div class="form-group">
-                <label for="ano">Ano</label>
-                <input type="number" class="form-control" id="ano" name="ano" required>
             </div>
             <button type="submit" class="btn btn-primary">Adicionar</button>
         </form>
