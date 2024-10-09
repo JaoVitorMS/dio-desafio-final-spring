@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            zoom: 1.2;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .container img {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+        }
+        .top-left {
+            top: -30px;
+            left: -30px;
+        }
+        .top-right {
+            top: -30px;
+            right: -30px;
+        }
+        .bottom-left {
+            bottom: -30px;
+            left: -30px;
+        }
+        .bottom-right {
+            bottom: -30px;
+            right: -30px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="utils/IMG_7090-removebg-preview.png" class="top-left" alt="Decorative Image">
+        <img src="utils/IMG_7090-removebg-preview.png" class="top-right" alt="Decorative Image">
+        <img src="utils/IMG_7090-removebg-preview.png" class="bottom-left" alt="Decorative Image">
+        <img src="utils/IMG_7090-removebg-preview.png" class="bottom-right" alt="Decorative Image">
+        <h1>Cadastro de Livros</h1>
+        <label for="titulo">Título do Livro:</label>
+        <input type="text" id="titulo" name="titulo">
+        <label for="autor">Nome do Autor:</label>
+        <input type="text" id="autor" name="autor">
+        <button id="registrar">Registrar Livro</button>
+        <button id="verCatalogo">Ver Catálogo</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
