@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("livros/")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:5500")
 public class LivroController {
 
     private final LivroRepositoryPort livroRepositoryPort;
@@ -32,13 +33,9 @@ public class LivroController {
         return new ResponseEntity<>(livro, HttpStatus.CREATED);
     }
     @PostMapping("/add")
-    public String  adicionar(
-        @RequestParam String titulo,
-        @RequestParam String autor
-    ) {
-        LivroDTO livroDTO  = new LivroDTO(titulo, autor);
+    public ResponseEntity<LivroDTO> addLivro(@RequestBody LivroDTO livroDTO) {
         livroServiceImpl.registrarLivro(livroDTO);
-        return "redirect:/livros/catalogo";
+        return new ResponseEntity<>(livroDTO, HttpStatus.CREATED);
     }
 
 }
