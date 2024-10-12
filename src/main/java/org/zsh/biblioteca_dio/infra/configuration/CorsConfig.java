@@ -17,7 +17,7 @@ public class CorsConfig {
                         .allowedOrigins("http://127.0.0.1:5500/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(true);""
+                        .allowCredentials(true);
             }
         };
     }
