@@ -13,7 +13,6 @@ public interface LivroRepositoryPort {
     void deletarLivroPorTitulo(String titulo);
     LivroEntity buscarLivroPorAutor( String autor);
     LivroEntity buscarLivroPorTitulo(String titulo);
-    List<LivroEntity> buscarLivroPorTituloAutor( String titulo, String autor);
     List<LivroEntity> buscarTodos();
 
 }

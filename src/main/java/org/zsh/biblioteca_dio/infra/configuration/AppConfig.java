@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.zsh.biblioteca_dio.adapter.outRepository.repository.LivroAdapterJPA;
 import org.zsh.biblioteca_dio.domain.model.Livro;
 import org.zsh.biblioteca_dio.dto.LivroConversor;
+import org.zsh.biblioteca_dio.dto.LivroDTO;
 
 @Configuration
 @EnableJpaRepositories(basePackageClasses = LivroAdapterJPA.class)
@@ -20,6 +21,5 @@ public class AppConfig {
     public Livro livro() {
        return new Livro();
     }
-
 
 }
