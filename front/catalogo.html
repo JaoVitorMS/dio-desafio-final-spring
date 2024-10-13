@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Livros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .livro {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .decorative-image {
+            display: block;
+            margin: 0 auto 20px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Catálogo de Livros</h1>
+    <img src="utils/IMG_7090-removebg-preview.png" class="decorative-image" alt="Decorative Image">
+    <div id="catalogo"></div>
+
+    <script>
+        fetch('http://localhost:8080/livros/catalogo')
+            .then(response => response.json())
+            .then(data => {
+                const catalogoDiv = document.getElementById('catalogo');
+                data.forEach(livro => {
+                    const livroDiv = document.createElement('div');
+                    livroDiv.className = 'livro';
+                    livroDiv.innerHTML = `<h2>${livro.titulo}</h2><p>Autor: ${livro.autor}</p>`;
+                    catalogoDiv.appendChild(livroDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o catálogo:', error);
+            });
+    </script>
+</body>
+</html>
